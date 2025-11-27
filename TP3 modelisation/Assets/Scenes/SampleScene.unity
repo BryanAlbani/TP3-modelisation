@@ -414,7 +414,7 @@ MonoBehaviour:
   - 2
   maxDepth: 4
   cubePrefab: {fileID: 3942097363719972763, guid: d63541b15e96c4142967ba7dc0c58a41, type: 3}
-  operation: 1
+  operation: 0
 --- !u!4 &584941451
 Transform:
   m_ObjectHideFlags: 0
