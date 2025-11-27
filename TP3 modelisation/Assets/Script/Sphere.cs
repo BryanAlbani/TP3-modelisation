@@ -62,8 +62,13 @@ public class Sphere : MonoBehaviour
         {
             if (node.isFull)
             {
-                Instantiate(cubePrefab, node.bounds.center, Quaternion.identity,
-                    this.transform).transform.localScale = node.bounds.size;
+                GameObject go = Instantiate(cubePrefab, node.bounds.center,
+                                            Quaternion.identity, this.transform);
+                go.transform.localScale = node.bounds.size;
+
+                // On ajoute le composant Voxel et on initialise le potentiel à 1 (plein)
+                Voxel voxel = go.AddComponent<Voxel>();
+                voxel.Init(1f);
             }
             return;
         }
@@ -73,6 +78,7 @@ public class Sphere : MonoBehaviour
             SpawnCubes(node.children[i]);
         }
     }
+
 
     bool IsCompletelyOutside(Bounds b)
     {
