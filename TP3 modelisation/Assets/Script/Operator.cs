@@ -5,7 +5,7 @@ public class Operator : MonoBehaviour
 {
     public enum BoolOp { Union, Intersection }
 
-    [Header("Sphères")]
+    [Header("Spheres")]
     public Vector3[] centers;
     public float[] radii;
 
@@ -13,7 +13,7 @@ public class Operator : MonoBehaviour
     public int maxDepth = 4;
     public GameObject cubePrefab;
 
-    [Header("Opérateur booléen")]
+    [Header("Operateur booleen")]
     public BoolOp operation = BoolOp.Union;
 
     private Octree root;
@@ -22,7 +22,7 @@ public class Operator : MonoBehaviour
     {
         if (centers == null || radii == null || centers.Length == 0 || radii.Length != centers.Length)
         {
-            Debug.LogError("Operator : configure centers et radii (le même nombre) dans l'inspecteur.");
+            Debug.LogError("Operator : configure centers et radii (le meme nombre) dans l'inspecteur");
             return;
         }
 
@@ -111,7 +111,10 @@ public class Operator : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             if ((corners[i] - c).sqrMagnitude > r2)
+            {
                 return false;
+            }
+                
         }
 
         return true;
@@ -231,13 +234,15 @@ public class Operator : MonoBehaviour
         {
             if (node.isFull)
             {
-                Instantiate(cubePrefab, node.bounds.center, Quaternion.identity, this.transform)
-                    .transform.localScale = node.bounds.size;
+                Instantiate(cubePrefab, node.bounds.center, Quaternion.identity, this.transform).transform.localScale = node.bounds.size;
             }
             return;
         }
 
         for (int i = 0; i < 8; i++)
+        {
             SpawnCubes(node.children[i]);
+        }
+            
     }
 }

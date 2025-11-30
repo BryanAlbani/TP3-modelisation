@@ -34,10 +34,7 @@ public class Octree
                 for (int z = 0; z < 2; z++)
                 {
                     Vector3 childMin = min + Vector3.Scale(size, new Vector3(x, y, z));
-                    Bounds childBounds = new Bounds(
-                        childMin + size / 2f,
-                        size
-                    );
+                    Bounds childBounds = new Bounds(childMin + size / 2f, size);
                     children[index++] = new Octree(childBounds);
                 }
             }

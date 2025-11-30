@@ -66,7 +66,6 @@ public class Sphere : MonoBehaviour
                                             Quaternion.identity, this.transform);
                 go.transform.localScale = node.bounds.size;
 
-                // On ajoute le composant Voxel et on initialise le potentiel à 1 (plein)
                 Voxel voxel = go.AddComponent<Voxel>();
                 voxel.Init(1f);
             }
@@ -147,7 +146,10 @@ public class Sphere : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             if ((corners[i] - center).sqrMagnitude > r2)
+            {
                 return false;
+            }
+                
         }
 
         return true;

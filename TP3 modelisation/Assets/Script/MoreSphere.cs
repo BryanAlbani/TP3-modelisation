@@ -3,7 +3,7 @@ using UnityEngine;
 //Exercice 2 :
 public class MoreSphere : MonoBehaviour
 {
-    [Header("Sphères")]
+    [Header("Spheres")]
     public Vector3[] centers;   
     public float[] radii;       
 
@@ -17,7 +17,7 @@ public class MoreSphere : MonoBehaviour
     {
         if (centers == null || radii == null || centers.Length == 0 || radii.Length != centers.Length)
         {
-            Debug.LogError("MoreSphere : configure centers et radii (le même nombre) dans l'inspecteur.");
+            Debug.LogError("MoreSphere : configure centers et radii (le meme nombre) dans l'inspecteur");
             return;
         }
 
@@ -93,7 +93,10 @@ public class MoreSphere : MonoBehaviour
 
            
             if (d2 <= r2)
-                return false; 
+            {
+                return false;
+            }
+                 
         }
 
         return true; 
@@ -130,13 +133,15 @@ public class MoreSphere : MonoBehaviour
         {
             if (node.isFull)
             {
-                Instantiate(cubePrefab, node.bounds.center, Quaternion.identity, this.transform)
-                    .transform.localScale = node.bounds.size;
+                Instantiate(cubePrefab, node.bounds.center, Quaternion.identity, this.transform).transform.localScale = node.bounds.size;
             }
             return;
         }
 
         for (int i = 0; i < 8; i++)
+        {
             SpawnCubes(node.children[i]);
+        }
+            
     }
 }
